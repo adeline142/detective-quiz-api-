@@ -11,12 +11,12 @@ function toJson(questionSet) {
 }
 
 async function list(req, res) {
-    const set = await questionSetService.list(req.user);
+    const sets = await questionSetService.list(req.user);
     res.status(200).json(sets.map(toJson));
 }
 
 async function get(req, res) {
-    const data = matchedData(req, { locations: ['params'] });
+    const { id } = matchedData(req, { locations: ['params'] });
     const questionSet = await questionSetService.get(id, req.user);
     res.status(200).json(toJson(questionSet));
 }
@@ -28,7 +28,7 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-    const { id } = matchedData(req, { locations: ['param'] });
+    const { id } = matchedData(req, { locations: ['params'] });
     const changes = matchedData(req, { locations: ['body'] });
     const questionSet = await questionSetService.update(id, changes, req.user);
     res.status(200).json(toJson(questionSet));

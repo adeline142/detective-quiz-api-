@@ -13,13 +13,14 @@ function isOwner(questionSet, user) {
     return questionSet.host_id === user.user_id || user.role === 'ADMIN';
 }
 
-async function findOwner(id, user) {
+async function findOwned(id, user) {
     const questionSet = await findOrFail(id);
     if (!isOwner(questionSet, user)) {
         throw forbidden('This question set belongs to another host.');
     }
     return questionSet;
 }
+
 
 function list(user) {
     return user.role === 'ADMIN'

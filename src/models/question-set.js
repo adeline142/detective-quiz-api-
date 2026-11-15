@@ -6,5 +6,5 @@ module.exports = (sequelize, DataTypes) =>
         host_id: { type: DataTypes.INTEGER, allowNull: false },
         title: { type: DataTypes.STRING(100), allowNull: false },
       },
-      { tableName: 'question_sets', timestamps: true, createdAt: 'created_at', updateAt: false }
+      { tableName: 'question_sets', timestamps: true, createdAt: 'created_at', updatedAt: false }
     );
