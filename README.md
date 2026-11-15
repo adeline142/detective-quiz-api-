@@ -57,14 +57,23 @@ Base URL: `http://localhost:3001/api/v1`
 | GET | /health | Is the API up and can it reach the database? | 200 (503 when the database is down) |
 | GET | /game-info | Slug, name, group, developer, description, player limits, version | 200 |
 | GET | /results | Finished games, every player, and the top 3. Needs the `X-Hub-Key` header. Optional `?since=` | 200 (401 without the key) |
+| GET | /question-sets | List your own question sets. HOST or ADMIN only | 200 |
+| POST | /question-sets | Create a question set. HOST or ADMIN only | 201 | 
+| GET | /question-sets/{id} | Read one question set. Owner or ADMIN only | 200 |
+| PATCH | /question-sets/{id} | Change the title. Owner or ADMIN only | 200 |
+| DELETE | /question-sets/{id} | Delete a question set. Owner or ADMIN only | 204 |
 
 ## What "completed" means in my game
 
-[One or two sentences: when does a player count as having completed a game? For example: "A player completed the game when they answered every question, even if some answers were wrong or timed out."]
+A player completed the game when they answered every question, even if some answers were wrong or timed out, or when their hearts reached 0 and the game ended.
 
 ## Tables
 
-[List your tables, one line each, in the order of your migrations.]
+1. users
+2. game_sessions
+3. seats
+4. questions
+5. question_sets
 
 ## Database scripts
 
