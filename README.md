@@ -62,6 +62,11 @@ Base URL: `http://localhost:3001/api/v1`
 | GET | /question-sets/{id} | Read one question set. Owner or ADMIN only | 200 |
 | PATCH | /question-sets/{id} | Change the title. Owner or ADMIN only | 200 |
 | DELETE | /question-sets/{id} | Delete a question set. Owner or ADMIN only | 204 |
+| POST | /sessions | Create a session with a server-generated 6-digit code. HOST or ADMIN only | 201|
+| GET | /sessions/{code} | Read one session and its status | 200 |
+| PATCH | /sessions/{code} | Change the status (LOBBY, RUNNING, CLOSED). Owner or ADMIN only | 200 |
+| POST | /sessions/{code}/players | Join a session with a nickname. Rejoining keeps the same seat | 201 (200 on rejoin) |
+| GET | /sessions/{code}/players | List the players in a session | 200 |
 
 ## What "completed" means in my game
 
